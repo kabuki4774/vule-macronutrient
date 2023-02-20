@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+
+import '../../../main.dart';
 
 class FoodWidget extends StatefulWidget {
   const FoodWidget({Key? key}) : super(key: key);

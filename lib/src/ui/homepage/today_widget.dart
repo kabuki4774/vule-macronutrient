@@ -1,9 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vulemacro/add_log_widget.dart';
-import 'package:vulemacro/food_log.dart';
-import 'main.dart';
-import 'dart:convert';
+
+import '../../../main.dart';
+import '../../../src/ui/logs/food_log.dart';
+import '../../../src/ui/new_entry/add_log_widget.dart';
 
 class TodayWidget extends StatefulWidget {
   const TodayWidget({Key? key}) : super(key: key);
@@ -84,7 +86,7 @@ class TodayWidgetState extends State<TodayWidget> {
                 child: Text("No food added yet"))
             : ListView(children: logWidgets),
         Align(
-            alignment: Alignment.bottomRight,
+            alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: FloatingActionButton(
@@ -98,11 +100,16 @@ class TodayWidgetState extends State<TodayWidget> {
                     });
                   });
                 },
-                child: const Icon(Icons.add),
+                child: Row(
+                  children: [
+                    const Icon(Icons.add),
+                    const Icon(Icons.fastfood_rounded),
+                  ],
+                ),
               ),
             )),
         Align(
-          alignment: Alignment.bottomLeft,
+          alignment: Alignment.bottomRight,
           child: Padding(
               padding: const EdgeInsets.all(10),
               child: FloatingActionButton(
@@ -131,7 +138,7 @@ class TodayWidgetState extends State<TodayWidget> {
                     showDialog(context: context, builder: (_) => dialog);
                   });
                 },
-                child: const Icon(Icons.check),
+                child: const Icon(Icons.navigate_next_rounded),
               )),
         ),
         Align(
@@ -180,6 +187,7 @@ class TodayWidgetState extends State<TodayWidget> {
       selectedWidget = onday ? getOnDayWidget() : getOffDayWidget();
     }
     return Padding(
-        padding: const EdgeInsets.only(top: 50), child: selectedWidget);
+        padding: const EdgeInsets.only(top: 50),
+        child: SingleChildScrollView(child: selectedWidget));
   }
 }

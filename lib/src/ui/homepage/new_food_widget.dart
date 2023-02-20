@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:vulemacro/food.dart';
-import 'main.dart';
+import 'package:path/path.dart';
+
+import '../../../main.dart';
+import '../../models/food.dart';
 
 class NewFoodWidget extends StatefulWidget {
   const NewFoodWidget({Key? key}) : super(key: key);
@@ -39,53 +39,73 @@ class NewFoodState extends State<NewFoodWidget> {
     buildContext = context;
     return Stack(
       children: [
+        Container(
+          child: Column(
+            children: [
+              Positioned(
+                  top: 50,
+                  left: 10,
+                  child: Image(
+                      image: image, width: 150, height: 150, fit: BoxFit.fill)),
+              Positioned(
+                  top: 200,
+                  left: 45,
+                  child: TextButton(
+                    onPressed: () => addImagePressed(),
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.amber[900]!),
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white)),
+                    child: const Text("Add Image"),
+                  )),
+            ],
+          ),
+        ),
         Positioned(
-            top: 50,
-            left: 10,
-            child:
-                Image(image: image, width: 150, height: 150, fit: BoxFit.fill)),
-        Positioned(
-            top: 200,
-            left: 45,
-            child: TextButton(
-              onPressed: () => addImagePressed(),
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.amber[900]!),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white)),
-              child: const Text("Add Image"),
-            )),
-        Positioned(
-            top: 60,
-            left: 180,
-            width: 140,
-            height: 50,
-            child: getInputField("Name", nameController, isnumber: false)),
-        Positioned(
-            left: 180,
-            top: 120,
-            width: 100,
-            height: 50,
-            child: getInputField("Calories", calorieController)),
-        Positioned(
-            left: 180,
-            top: 170,
-            width: 100,
-            height: 50,
-            child: getInputField("🥩", proteinController)),
-        Positioned(
-            left: 180,
-            top: 220,
-            width: 100,
-            height: 50,
-            child: getInputField("🥔", carbController)),
-        Positioned(
-            left: 180,
-            top: 270,
-            width: 100,
-            height: 50,
-            child: getInputField("🧀", fatController)),
+          top: 60,
+          left: 180,
+          width: 140,
+          height: 150,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Positioned(
+                    top: 60,
+                    left: 180,
+                    width: 140,
+                    height: 50,
+                    child:
+                        getInputField("Name", nameController, isnumber: false)),
+                Positioned(
+                    left: 180,
+                    top: 120,
+                    width: 100,
+                    height: 50,
+                    child: getInputField("Calories", calorieController)),
+                Positioned(
+                    left: 180,
+                    top: 170,
+                    width: 100,
+                    height: 50,
+                    child: getInputField("🥩", proteinController)),
+                Positioned(
+                    left: 180,
+                    top: 220,
+                    width: 100,
+                    height: 50,
+                    child: getInputField("🥔", carbController)),
+                Positioned(
+                    left: 180,
+                    top: 270,
+                    width: 100,
+                    height: 50,
+                    child: getInputField("🧀", fatController)),
+              ],
+            ),
+          ),
+        ),
         Align(
             alignment: Alignment.bottomRight,
             child: Padding(

@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vulemacro/food.dart';
-import 'package:vulemacro/food_log.dart';
-import 'main.dart';
-import 'dart:convert';
+
+import '../../../main.dart';
+import '../../../src/models/food.dart';
+import '../../../src/ui/logs/food_log.dart';
 
 class AddLogWidget extends StatefulWidget {
   Function closeCallback;

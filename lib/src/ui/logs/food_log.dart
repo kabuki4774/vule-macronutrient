@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vulemacro/food.dart';
-import 'main.dart';
+
+import '../../../main.dart';
+import '../../../src/models/food.dart';
 
 class FoodLog {
   late String foodName;

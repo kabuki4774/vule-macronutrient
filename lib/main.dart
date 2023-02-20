@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'main_widget.dart';
-import 'food.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
+
+import 'src/models/food.dart';
+import 'src/services/global_bloc.dart';
+import 'src/ui/homepage/homepage.dart';
 
 List<Food> Foods = [];
 late SharedPreferences preferenceInstance;
@@ -25,15 +29,38 @@ void main() async {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  late GlobalBloc globalBloc;
+
+  void initState() {
+    globalBloc = GlobalBloc();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.amber[900],
     ));
-    return const MaterialApp(home: MainWidget());
+    return Provider<GlobalBloc>.value(
+      value: globalBloc,
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+          brightness: Brightness.light,
+        ),
+        //home: MainWidget(),
+        home: HomePage(),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
   }
 }

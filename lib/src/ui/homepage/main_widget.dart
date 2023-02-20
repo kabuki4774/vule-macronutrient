@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vulemacro/food_widget.dart';
-import 'package:vulemacro/new_food_widget.dart';
-import 'package:vulemacro/today_widget.dart';
+
+import '../../../src/ui/homepage/food_widget.dart';
+import '../../../src/ui/homepage/new_food_widget.dart';
+import '../../../src/ui/homepage/today_widget.dart';
 
 class MainWidget extends StatefulWidget {
   const MainWidget({Key? key}) : super(key: key);

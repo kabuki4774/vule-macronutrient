@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vulemacro/main.dart';
-import 'dart:convert';
+import 'package:path_provider/path_provider.dart';
+
+import '../../../main.dart';
 
 class Food {
   String name, imagefile;
